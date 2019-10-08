@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
     
@@ -15,16 +16,14 @@ class TodoListViewController: UITableViewController {
     
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask) )
         
-        
-        
-        
-        print(dataFilePath)
-        
-        loadItems()
+       loadItems()
         //Will address this later
 //        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
 //            itemArray = items
@@ -76,11 +75,16 @@ class TodoListViewController: UITableViewController {
 //            itemArray[indexPath.row].done = false
 //        }
 
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
+        
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
         self.saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+       
     }
     
     //MARK - Add New Items
@@ -94,9 +98,10 @@ class TodoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             //what happens after the user clicks the Add Item button on our UIAlert
             
-            let newItem = Item()
+           
+            let newItem = Item(context: self.context)
             newItem.title = textField.text!
-            
+            newItem.done = false
             self.itemArray.append(newItem)
 
             self.saveItems()
@@ -116,29 +121,24 @@ class TodoListViewController: UITableViewController {
     //MARK - Model Manipulation Methods
     
     func saveItems() {
-        //Encode new addition to itemArray with NSCoder
-        
-        let encoder = PropertyListEncoder()
+
         
         do {
-            let data = try encoder.encode(itemArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print ("Error encoding item array, \(error)")
+            print("Error saving context, \(error)")
         }
         
         self.tableView.reloadData()
     }
     
     func loadItems() {
-               if let data = try? Data(contentsOf: dataFilePath!) {
-                    let decoder = PropertyListDecoder()
-                   do {
-                       itemArray = try decoder.decode([Item].self, from: data)
-                   } catch {
-                       print("Error decoding item array, \(error)")
-                   }
-               }
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print ("Error fetching data from context \(error)")
+        }
     }
 }
 
