@@ -54,7 +54,7 @@ class CategoryViewController: UITableViewController {
              newCategory.name = textField.text!
              self.categoryArray.append(newCategory)
 
-             self.saveItems()
+             self.saveCategories()
         
          }
          
@@ -70,7 +70,7 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - Model Manipulation Methods
     
-    func saveItems() {
+    func saveCategories() {
 
         
         do {
