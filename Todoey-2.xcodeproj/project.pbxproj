@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A7A66F9234C237B009BD26B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A66F7234C237B009BD26B /* DataModel.xcdatamodeld */; };
+		0AB7C7D9234F96C50000823A /* CategoryViewControlerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7C7D8234F96C50000823A /* CategoryViewControlerTableViewController.swift */; };
 		0AD2E2E82346792F00E757AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2E2E72346792F00E757AD /* AppDelegate.swift */; };
 		0AD2E2EA2346792F00E757AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2E2E92346792F00E757AD /* SceneDelegate.swift */; };
 		0AD2E2EC2346792F00E757AD /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2E2EB2346792F00E757AD /* TodoListViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		0A7A66F8234C237B009BD26B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		0AB7C7D8234F96C50000823A /* CategoryViewControlerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewControlerTableViewController.swift; sourceTree = "<group>"; };
 		0AD2E2E42346792F00E757AD /* Todoey-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todoey-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD2E2E72346792F00E757AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AD2E2E92346792F00E757AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		0A7A66D2234BB872009BD26B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0AB7C7D8234F96C50000823A /* CategoryViewControlerTableViewController.swift */,
 				0AD2E2EB2346792F00E757AD /* TodoListViewController.swift */,
 			);
 			path = Controllers;
@@ -175,6 +178,7 @@
 			files = (
 				0A7A66F9234C237B009BD26B /* DataModel.xcdatamodeld in Sources */,
 				0AD2E2EC2346792F00E757AD /* TodoListViewController.swift in Sources */,
+				0AB7C7D9234F96C50000823A /* CategoryViewControlerTableViewController.swift in Sources */,
 				0AD2E2E82346792F00E757AD /* AppDelegate.swift in Sources */,
 				0AD2E2EA2346792F00E757AD /* SceneDelegate.swift in Sources */,
 			);
