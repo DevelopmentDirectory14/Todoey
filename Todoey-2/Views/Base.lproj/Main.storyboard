@@ -6,6 +6,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="KIL-hm-TxG">
+            <objects>
+                <tableViewController id="Aen-69-Ybf" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GQh-V0-SSw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qkZ-eo-usM">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qkZ-eo-usM" id="UZj-Ww-ojX">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Aen-69-Ybf" id="AfP-fg-EhS"/>
+                            <outlet property="delegate" destination="Aen-69-Ybf" id="2tA-FM-GCJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="z7b-ww-wZy"/>
+                    <connections>
+                        <segue destination="4Va-mf-jWK" kind="show" identifier="goToItems" id="8wp-sP-L6M"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJA-Bg-Y14" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1477" y="97"/>
+        </scene>
         <!--Todoey-->
         <scene sceneID="8I4-va-ZkI">
             <objects>
@@ -48,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3y1-yc-Ch1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1501.449275362319" y="99.776785714285708"/>
+            <point key="canvasLocation" x="2306" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7z7-sB-asI">
@@ -65,7 +97,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="4Va-mf-jWK" kind="relationship" relationship="rootViewController" id="4GM-YO-2gG"/>
+                        <segue destination="Aen-69-Ybf" kind="relationship" relationship="rootViewController" id="nhQ-Ui-Zy2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7w-Rb-lnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
