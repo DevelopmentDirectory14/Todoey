@@ -41,16 +41,6 @@ class TodoListViewController: UITableViewController {
         
         cell.textLabel?.text = item.title
         
-      // Replaced by line of code below that features a Ternary Operator
-//        if item.done == true {
-//            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
-        
-        // Ternary operator ==>
-        // value = condition ? valueIfTrue : valueIfFalse
-        
          cell.accessoryType = item.done ? .checkmark : .none
         
         
@@ -66,17 +56,6 @@ class TodoListViewController: UITableViewController {
     //MARK - Tableview Delegate Methods
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-// --> Replaced with line below that is simpler and more elegant
-//        if itemArray[indexPath.row].done == false {
-//            itemArray[indexPath.row].done = true
-//        } else {
-//            itemArray[indexPath.row].done = false
-//        }
-
-//        context.delete(itemArray[indexPath.row])
-//        itemArray.remove(at: indexPath.row)
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         

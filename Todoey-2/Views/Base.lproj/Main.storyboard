@@ -9,7 +9,7 @@
         <!--Todoey-->
         <scene sceneID="KIL-hm-TxG">
             <objects>
-                <tableViewController id="Aen-69-Ybf" customClass="CategoryViewControlerTableViewController" customModule="Todoey_2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Aen-69-Ybf" customClass="CategoryViewController" customModule="Todoey_2" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GQh-V0-SSw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wcz-7M-1Ca">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="Aen-69-Ybf" id="TRF-gG-8kA"/>
+                                <action selector="addButtonPressed:" destination="Aen-69-Ybf" id="EEo-NF-ZdF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
