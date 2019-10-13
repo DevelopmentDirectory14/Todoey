@@ -13,12 +13,12 @@ class CategoryViewController: UITableViewController {
     
     let realm = try! Realm()
     
-    var categories : Results<Category>!
+    var categories : Results<Category>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadCategories()
+//        loadCategories()
     }
 
     //MARK - Tableview Datasource Methods
@@ -27,9 +27,7 @@ class CategoryViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        let category = categories[indexPath.row]
-        
-        cell.textLabel?.text = category.name
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet."
         
         return cell
      }
@@ -37,7 +35,7 @@ class CategoryViewController: UITableViewController {
      //TODO: Declare numberOfRowsInSection here:
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                
-        return categories.count
+        return categories?.count ?? 1
            }
     
     //MARK - TableView Delegate Methods
@@ -50,7 +48,7 @@ class CategoryViewController: UITableViewController {
         let destinationVC = segue.destination as! TodoListViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories[indexPath.row]
+            destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }
     
