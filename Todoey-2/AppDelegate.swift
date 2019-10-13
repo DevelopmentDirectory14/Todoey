@@ -17,14 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let data = Data()
-        data.name = "Alex"
-        data.age = 31
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         
         do {
             let realm = try Realm()
-            try realm.write{
-                realm.add(data)
             }
         } catch {
             print("Error loading Realm object, \(error)")
