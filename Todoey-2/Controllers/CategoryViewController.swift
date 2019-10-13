@@ -13,9 +13,7 @@ class CategoryViewController: UITableViewController {
     
     let realm = try! Realm()
     
-    var categoryArray = [Category]()
-    
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var categories : Results<Category>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class CategoryViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        let category = categoryArray[indexPath.row]
+        let category = categories[indexPath.row]
         
         cell.textLabel?.text = category.name
         
@@ -39,7 +37,7 @@ class CategoryViewController: UITableViewController {
      //TODO: Declare numberOfRowsInSection here:
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                
-        return categoryArray.count
+        return categories.count
            }
     
     //MARK - TableView Delegate Methods
@@ -52,7 +50,7 @@ class CategoryViewController: UITableViewController {
         let destinationVC = segue.destination as! TodoListViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categoryArray[indexPath.row]
+            destinationVC.selectedCategory = categories[indexPath.row]
         }
     }
     
@@ -69,7 +67,6 @@ class CategoryViewController: UITableViewController {
             
              let newCategory = Category()
              newCategory.name = textField.text!
-             self.categoryArray.append(newCategory)
 
             self.save(category: newCategory)
         
@@ -102,15 +99,10 @@ class CategoryViewController: UITableViewController {
     }
     
     func loadCategories() {
-//        let request : NSFetchRequest<Category> = Category.fetchRequest()
-//        
-//        do {
-//            categoryArray = try context.fetch(request)
-//        } catch {
-//            print ("Error fetching data from context \(error)")
-//        }
-//        
-//        tableView.reloadData()
+        
+        categories = realm.objects(Category.self)
+        
+        tableView.reloadData()
     }
     
 }
