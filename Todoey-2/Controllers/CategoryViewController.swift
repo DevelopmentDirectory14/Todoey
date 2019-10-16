@@ -31,30 +31,13 @@ class CategoryViewController: SwipeTableViewController {
 
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet."
+        if let category = categories?[indexPath.row] {
         
-        
-        if categories?[indexPath.row].cellColor == "No Color" {
-            print("No Color")
-            let generatedColor = UIColor.randomFlat().hexValue() ?? "No Color"
-            cell.backgroundColor = UIColor(hexString: generatedColor)
+            cell.textLabel?.text = category.name ?? "No Categories Added Yet."
             
-            do {
-                try realm.write {
-                    categories?[indexPath.row].cellColor = generatedColor
-                }
-            } catch {
-                print("Error saving done status, \(error)")
-            }
+            cell.backgroundColor = UIColor(hexString: category.cellColor ?? "1D9BF6")
             
-        } else {
-            let storedColor = categories?[indexPath.row].cellColor
-            cell.backgroundColor = UIColor(hexString: storedColor)
-        }
-            
-//            cell.backgroundColor !=
-//        cell.backgroundColor = UIColor(hexString: UIColor.randomFlat().hexValue())
-
+        } 
         return cell
      }
     
@@ -91,9 +74,10 @@ class CategoryViewController: SwipeTableViewController {
              //what happens after the user clicks the Add Item button on our UIAlert
              
             
-             let newCategory = Category()
-             newCategory.name = textField.text!
-
+            let newCategory = Category()
+            newCategory.name = textField.text!
+            newCategory.cellColor = UIColor.randomFlat().hexValue()
+            
             self.save(category: newCategory)
         
          }
