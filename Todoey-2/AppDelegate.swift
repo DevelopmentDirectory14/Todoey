@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Error loading Realm object, \(error)")
         }
-
+        
+        
        
     return true
 
@@ -34,4 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     }
+    
+    
 }
+

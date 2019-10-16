@@ -21,6 +21,7 @@ class CategoryViewController: SwipeTableViewController {
 
         loadCategories()
         
+        tableView.separatorStyle = .none
         tableView.rowHeight = 80.0
     }
 
@@ -32,8 +33,28 @@ class CategoryViewController: SwipeTableViewController {
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet."
         
-        cell.backgroundColor = UIColor.randomFlat()
-        //test
+        
+        if categories?[indexPath.row].cellColor == "No Color" {
+            print("No Color")
+            let generatedColor = UIColor.randomFlat().hexValue() ?? "No Color"
+            cell.backgroundColor = UIColor(hexString: generatedColor)
+            
+            do {
+                try realm.write {
+                    categories?[indexPath.row].cellColor = generatedColor
+                }
+            } catch {
+                print("Error saving done status, \(error)")
+            }
+            
+        } else {
+            let storedColor = categories?[indexPath.row].cellColor
+            cell.backgroundColor = UIColor(hexString: storedColor)
+        }
+            
+//            cell.backgroundColor !=
+//        cell.backgroundColor = UIColor(hexString: UIColor.randomFlat().hexValue())
+
         return cell
      }
     
