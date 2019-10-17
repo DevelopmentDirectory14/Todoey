@@ -13,9 +13,10 @@ class TodoListViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var todoItems: Results<Item>?
 
-    
     var selectedCategory : Category? {
         didSet {
             loadItems()
@@ -45,8 +46,18 @@ class TodoListViewController: SwipeTableViewController {
                
             guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist.")
             }
+            
+            if let navBarColor = UIColor(hexString: hexColor) {
                 
-                   navBar.barTintColor = UIColor(hexString: hexColor)
+                navBar.barTintColor = navBarColor
+                
+                navBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: navBarColor, isFlat: true)
+                
+                navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: navBarColor, isFlat: true)]
+                
+                searchBar.barTintColor = navBarColor
+                
+            }
         }
     }
     
