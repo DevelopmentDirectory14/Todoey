@@ -40,13 +40,26 @@ class TodoListViewController: SwipeTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        guard let hexColor = selectedCategory?.cellColor else {fatalError()}
-               
-        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist.")}
-        
         title = selectedCategory?.name
         
-        guard let navBarColor = UIColor(hexString: hexColor) else {fatalError()}
+        guard let hexColor = selectedCategory?.cellColor else {fatalError()}
+        
+        updatedNavBar(withHexCode: hexColor)
+                
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    
+        updatedNavBar(withHexCode: "1D9BF6")
+    
+    }
+    
+//MARK: - Navigation Bar Setup Methods
+    
+    func updatedNavBar(withHexCode colorHexCode: String) {
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist.")}
+        
+        guard let navBarColor = UIColor(hexString: colorHexCode) else {fatalError()}
             
         navBar.barTintColor = navBarColor
         
@@ -55,21 +68,6 @@ class TodoListViewController: SwipeTableViewController {
         navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: navBarColor, isFlat: true)]
         
         searchBar.barTintColor = navBarColor
-                
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        guard let originalColor = UIColor(hexString: "1D9BF6") else {fatalError()}
-        navigationController?.navigationBar.barTintColor = originalColor
-        navigationController?.navigationBar.tintColor = UIColor.flatWhite()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: UIColor.flatWhite(), isFlat: true)]
-    
-    }
-    
-//MARK: - Navigation Bar Setup Methods
-    
-    func updatedNavBar(withHexCode colorHexCode: String) {
-        
     }
     
     
