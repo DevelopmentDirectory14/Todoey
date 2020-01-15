@@ -28,6 +28,9 @@ class TodoListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let button = UIButton()
+        button.setImage(UIImage(named:"plus_photo"), for: .normal)
+        
         tableView.rowHeight = 80.0
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask) )
